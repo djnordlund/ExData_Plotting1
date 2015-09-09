@@ -30,10 +30,12 @@
 ## Set working directory
 setwd("C:/Users/Daniel Nordlund/Coursera/ExData_Plotting1")
 
-## download power consumption data zip file and extract data
-##   fileURL <- 'https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip'
-##   download.file(fileURL, destfile = 'household_power_consumption.zip', mode = 'wb')
-##   unzip('household_power_consumption.zip')
+## IF necessary, download power consumption data zipfile and extract data
+if( !file.exists('household_power_consumption.txt')) {
+   fileURL <- 'https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip'
+   download.file(fileURL, destfile = 'household_power_consumption.zip', mode = 'wb')
+   unzip('household_power_consumption.zip')
+}
 
 ## read data from the working directory
 power <- read.table("household_power_consumption.txt", header=TRUE, sep=';', 
@@ -42,7 +44,7 @@ power <- read.table("household_power_consumption.txt", header=TRUE, sep=';',
 dim(power)
 
 ## create subset of the days of interest
-power_subset <-  power[power$Date %in% c('1/2/2007', '2/2/2007')),]
+power_subset <-  power[power$Date %in% c('1/2/2007', '2/2/2007'),]
 
 
 ##convert the Date and Time strings into a single date/time variable

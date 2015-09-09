@@ -30,10 +30,12 @@
 ## Set working directory
 setwd("C:/Users/Daniel Nordlund/Coursera/ExData_Plotting1")
 
-## download power consumption data zip file and extract data
-##   fileURL <- 'https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip'
-##   download.file(fileURL, destfile = 'household_power_consumption.zip', mode = 'wb')
-##   unzip('household_power_consumption.zip')
+## IF necessary, download power consumption data zipfile and extract data
+if( !file.exists('household_power_consumption.txt')) {
+   fileURL <- 'https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip'
+   download.file(fileURL, destfile = 'household_power_consumption.zip', mode = 'wb')
+   unzip('household_power_consumption.zip')
+}
 
 ## read data from the working directory
 power <- read.table("household_power_consumption.txt", header=TRUE, sep=';', 
@@ -42,7 +44,7 @@ power <- read.table("household_power_consumption.txt", header=TRUE, sep=';',
 dim(power)
 
 ## create subset of the days of interest
-power_subset <-  power[power$Date %in% c('1/2/2007', '2/2/2007')),]
+power_subset <-  power[power$Date %in% c('1/2/2007', '2/2/2007'),]
 
 
 ##convert the Date and Time strings into a single date/time variable
@@ -56,6 +58,6 @@ png(filename = "plot3.png", width = 480, height = 480)
 plot(power_subset$dateTime, power_subset$Sub_metering_1, xlab = '', ylab='Energy sub metering', type='l')
 lines(power_subset$dateTime, power_subset$Sub_metering_2, type='l', col='red')
 lines(power_subset$dateTime, power_subset$Sub_metering_3, type='l', col='blue')
-legend('topright', legend = c('sub_metering_1', 'sub_metering_2', 'sub_metering_3'), lty=c(1,1,1), col = c('black','red','blue'))
+legend('topright', legend = c('Sub_metering_1', 'Sub_metering_2', 'Sub_metering_3'), lty=c(1,1,1), col = c('black','red','blue'))
 dev.off()
 
