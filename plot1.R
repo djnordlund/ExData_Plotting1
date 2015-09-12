@@ -28,9 +28,9 @@
 
 
 ## Set working directory
-setwd("C:/Users/Daniel Nordlund/Coursera/ExData_Plotting1")
+## setwd("C:/Users/Daniel Nordlund/Coursera/ExData_Plotting1")
 
-## IF necessary, download power consumption data zipfile and extract data
+## IF NECESSARY, download power consumption data zipfile and extract data
 if( !file.exists('household_power_consumption.txt')) {
    fileURL <- 'https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip'
    download.file(fileURL, destfile = 'household_power_consumption.zip', mode = 'wb')
@@ -43,7 +43,7 @@ power <- read.table("household_power_consumption.txt", header=TRUE, sep=';',
 ## Dimensions should be 2,075,259 X 9
 dim(power)
 
-## create subset of the days of interest
+## create subset of the days of interest dimensions should be 2880 X 9
 power_subset <-  power[power$Date %in% c('1/2/2007', '2/2/2007'),]
 
 

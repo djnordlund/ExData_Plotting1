@@ -28,9 +28,9 @@
 
 
 ## Set working directory
-setwd("C:/Users/Daniel Nordlund/Coursera/ExData_Plotting1")
+## setwd("C:/Users/Daniel Nordlund/Coursera/ExData_Plotting1")
 
-## IF necessary, download power consumption data zipfile and extract data
+## IF NECESSARY, download power consumption data zipfile and extract data
 if( !file.exists('household_power_consumption.txt')) {
    fileURL <- 'https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip'
    download.file(fileURL, destfile = 'household_power_consumption.zip', mode = 'wb')
